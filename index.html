@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Hack</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Nền màu đen */
+            color: #00FF00; /* Màu chữ xanh lá neon */
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00, 0 0 40px #00FF00;
+            animation: moveUpDown 2s infinite ease-in-out;
+        }
+        @keyframes moveUpDown {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #00FF00;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .button:hover {
+            background-color: #00CC00;
+            transform: scale(1.1);
+        }
+        .button:active {
+            transform: scale(1.05);
+        }
+        .numbers-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+        .number {
+            position: absolute;
+            font-size: 3rem;
+            color: #00FF00;
+            text-shadow: 0 0 15px #00FF00, 0 0 30px #00FF00, 0 0 45px #00FF00;
+            opacity: 0;
+            animation: float 1s forwards;
+        }
+        @keyframes float {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-150px);
+            }
+        }
+        /* Hiệu ứng tàng hình cho dòng chữ "Made by Veklon" */
+        .made-by {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            font-size: 1.5rem;
+            color: #00FF00;
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+            animation: fadeInOut 3s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to our hacking website</h1>
+    <button class="button" onclick="getHack()">Get Hack</button>
+    <div id="numbers-container" class="numbers-container"></div>
+    <div class="made-by">Made by Veklon</div>
+
+    <script>
+        function getHack() {
+            const numbersContainer = document.getElementById("numbers-container");
+            const numberOfNumbers = 20;  // Số lượng con số sẽ tỏa ra
+
+            // Tạo nhiều con số "10101"
+            for (let i = 0; i < numberOfNumbers; i++) {
+                const numberDiv = document.createElement("div");
+                numberDiv.classList.add("number");
+                numberDiv.textContent = "10101";
+                // Vị trí ngẫu nhiên cho từng con số
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 150 + 50;  // Khoảng cách ngẫu nhiên từ trung tâm
+                const x = Math.cos(angle) * distance + window.innerWidth / 2;
+                const y = Math.sin(angle) * distance + window.innerHeight / 2;
+
+                // Vị trí của con số
+                numberDiv.style.left = `${x}px`;
+                numberDiv.style.top = `${y}px`;
+
+                numbersContainer.appendChild(numberDiv);
+            }
+
+            // Sau 1 giây, ẩn các con số
+            setTimeout(() => {
+                numbersContainer.innerHTML = "";  // Xóa các con số
+            }, 1000);
+
+            // Chuyển hướng đến video Rick Roll
+            window.open("https://files.catbox.moe/4d91gp.mp4", "_blank");
+        }
+    </script>
+</body>
+</html>
